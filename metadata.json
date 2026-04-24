@@ -1,0 +1,6 @@
+{
+  "name": "FlowTik Downloader",
+  "description": "A modern TikTok Video Downloader. Fetch, preview, and download HD TikTok videos without a watermark.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
