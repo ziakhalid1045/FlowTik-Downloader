@@ -3,11 +3,161 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { Download, Link2, RefreshCw, Play, Loader2, Music, Copy, Check, AlertCircle, Github, Info, HelpCircle, Puzzle, X, Shield, FileText, Mail, MessageSquare } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Download, Link2, RefreshCw, Play, Loader2, Music, Copy, Check, AlertCircle, Github, Info, HelpCircle, Puzzle, X, Shield, FileText, Mail, MessageSquare, Twitter, Facebook } from 'lucide-react';
 
-type Page = 'home' | 'privacy' | 'terms' | 'contact' | 'about' | 'disclaimer';
+type Page = 'home' | 'privacy' | 'terms' | 'contact' | 'about' | 'disclaimer' | 'blog' | 'post';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: React.ReactNode;
+  date: string;
+  category: string;
+}
+
+const mockPosts: BlogPost[] = [
+  {
+    id: 'how-to-download-tiktok-videos-no-watermark',
+    title: 'How to Download TikTok Videos Without Watermark in 2026',
+    excerpt: 'Learn the quickest and most effective methods to save TikTok content without the distracting logo...',
+    date: 'April 25, 2026',
+    category: 'Guides',
+    content: (
+      <>
+        <p>In 2026, TikTok remains the powerhouse of short-form video content. From viral dances to educational snippets, everyone is creating and sharing. But what if you want to save a video for offline viewing or repurpose it on another platform without that bouncing watermark?</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Why Remove the Watermark?</h2>
+        <p>Watermarks can be distracting, especially if you are a creator trying to maintain a cohesive aesthetic across Instagram Reels or YouTube Shorts. Using a tool like FlowTik ensures the video looks native and high-quality.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">The FlowTik Method</h2>
+        <p>FlowTik is the leading free web service to fetch and download TikTok content in HD. It doesn’t compress your videos—you get the highest resolution available directly from the TikTok CDN.</p>
+        <ol className="list-decimal pl-6 mt-4 space-y-2">
+          <li>Find the video on the TikTok app and tap "Share".</li>
+          <li>Select "Copy Link".</li>
+          <li>Paste the link into FlowTik.xyz and click "Download".</li>
+        </ol>
+      </>
+    )
+  },
+  {
+    id: 'tiktok-marketing-trends-business',
+    title: 'Top 5 TikTok Trends for Business Marketing',
+    excerpt: 'Discover which viral trends are driving real ROI for businesses and how to leverage them immediately.',
+    date: 'April 22, 2026',
+    category: 'Marketing',
+    content: (
+      <>
+        <p>Brands have realized that traditional advertising doesn't work on TikTok. The golden rule? "Make TikToks, not ads." Here are the top trends you need to jump on.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">1. Behind The Scenes (BTS) Authentic Content</h2>
+        <p>Showcasing the messy backstage of your business builds trust. People want to see the human side of the brand.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">2. Employee Advocates</h2>
+        <p>Instead of hiring expensive influencers, many brands are turning their own employees into stars.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">3. Save & Repurpose</h2>
+        <p>When an employee makes a great TikTok, brands often want to cross-post it to LinkedIn or Twitter. This is where downloading the HD video without a watermark (using FlowTik!) becomes an essential business marketing tool.</p>
+      </>
+    )
+  },
+  {
+    id: 'tiktok-to-mp3-guide',
+    title: 'Extracting Viral Audio: The Ultimate TikTok to MP3 Guide',
+    excerpt: 'Found a trending sound on a video? Here is how to legally and easily save it as an MP3 for your own creations.',
+    date: 'April 19, 2026',
+    category: 'Tips & Tricks',
+    content: (
+      <>
+        <p>Sometimes the best part of a TikTok isn't the video—it's the audio. Whether it's a hilarious original voiceover or a remixed song, audio drives discovery on the platform.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">How to Get the Audio</h2>
+        <p>FlowTik isn't just for videos. Our engine seamlessly separates the high-quality M4A/MP3 stream from the video file.</p>
+        <ol className="list-decimal pl-6 mt-4 space-y-2">
+          <li>Copy the TikTok URL of the video containing the sound.</li>
+          <li>Paste it into FlowTik.</li>
+          <li>Below the result, click the "Download Audio" or "MP3" button.</li>
+        </ol>
+        <p className="mt-4">You can now use this audio in your video editing software of choice!</p>
+      </>
+    )
+  }
+];
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    adsbygoogle?: any[];
+  }
+}
+
+const AdUnit = ({ className = "my-8" }: { className?: string }) => {
+  const adRef = useRef<HTMLModElement>(null);
+
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && adRef.current && !adRef.current.getAttribute('data-adsbygoogle-status')) {
+         (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  return (
+    <div className={`w-full bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-slate-500 text-sm p-4 text-center min-h-[120px] overflow-hidden ${className}`}>
+      <ins className="adsbygoogle"
+           ref={adRef}
+           style={{display: 'block', width: '100%', height: '100%'}}
+           data-ad-client="ca-pub-5944670264663002"
+           data-ad-slot="1234567890" // Placeholder slot ID
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+  );
+};
+
+const shareOnWhatsApp = (url: string, title: string) => {
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + url)}`, '_blank');
+};
+
+const shareOnTwitter = (url: string, title: string) => {
+  window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+};
+
+const shareOnFacebook = (url: string) => {
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+};
+
+const ShareButtons = ({ url, title, className = "" }: { url: string, title: string, className?: string }) => {
+  return (
+    <div className={`flex items-center gap-3 mt-6 ${className}`}>
+      <span className="text-sm font-medium text-slate-400">Share:</span>
+      <button onClick={() => shareOnWhatsApp(url, title)} className="w-10 h-10 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white flex items-center justify-center transition-all" title="Share on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </button>
+      <button onClick={() => shareOnTwitter(url, title)} className="w-10 h-10 rounded-full bg-[#1DA1F2]/10 text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white flex items-center justify-center transition-all" title="Share on Twitter">
+        <Twitter className="w-5 h-5" />
+      </button>
+      <button onClick={() => shareOnFacebook(url)} className="w-10 h-10 rounded-full bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-all" title="Share on Facebook">
+        <Facebook className="w-5 h-5" />
+      </button>
+    </div>
+  );
+};
+
 import { motion, AnimatePresence } from 'motion/react';
+
+// --- Cloud Database Configuration ---
+// TO DEPLOY WITHOUT MANUAL SETUP:
+// These are temporary mock values for JSONBin.
+// To use your own cloud database, create a bin at jsonbin.io and paste the API Key and BIN ID here.
+// IMPORTANT: Exposing API keys in client-side code is a potential security risk in production.
+const JSONBIN_API_KEY = "YOUR_JSONBIN_API_KEY_HERE";
+const JSONBIN_BIN_ID = "YOUR_JSONBIN_BIN_ID_HERE";
+
+interface DownloadHistoryItem {
+  id: string;
+  url: string;
+  title: string;
+  thumbnail: string;
+  timestamp: number;
+}
 
 // Interfaces for API response
 interface TikwmResponse {
@@ -41,8 +191,40 @@ export default function App() {
   const [videoData, setVideoData] = useState<TikwmResponse['data'] | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
   const [toasts, setToasts] = useState<ToastInfo[]>([]);
+  const [downloadingItems, setDownloadingItems] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentPostId, setCurrentPostId] = useState<string | null>(null);
   const [showCookieNotice, setShowCookieNotice] = useState(false);
+  const [downloadHistory, setDownloadHistory] = useState<DownloadHistoryItem[]>([]);
+
+  useEffect(() => {
+    const loadHistory = async () => {
+      const local = localStorage.getItem('flowtik-history');
+      if (local) {
+        try {
+          setDownloadHistory(JSON.parse(local));
+        } catch(e) {}
+      }
+      
+      if (JSONBIN_BIN_ID && JSONBIN_BIN_ID !== "YOUR_JSONBIN_BIN_ID_HERE") {
+        try {
+          const res = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
+            headers: {
+              ...(JSONBIN_API_KEY && JSONBIN_API_KEY !== "YOUR_JSONBIN_API_KEY_HERE" ? { 'X-Master-Key': JSONBIN_API_KEY } : {})
+            }
+          });
+          const data = await res.json();
+          if (data?.record?.history) {
+            setDownloadHistory(data.record.history);
+            localStorage.setItem('flowtik-history', JSON.stringify(data.record.history));
+          }
+        } catch (error) {
+          console.error("Failed to fetch history from cloud:", error);
+        }
+      }
+    };
+    loadHistory();
+  }, []);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
@@ -50,6 +232,15 @@ export default function App() {
       setTimeout(() => setShowCookieNotice(true), 2000);
     }
   }, []);
+
+  useEffect(() => {
+    // Track Page Views
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_path: window.location.pathname + '?page=' + currentPage,
+      });
+    }
+  }, [currentPage]);
 
   const acceptCookies = () => {
     localStorage.setItem('cookie-consent', 'true');
@@ -81,14 +272,37 @@ export default function App() {
     setVideoData(null);
 
     try {
-      // Simulate slight delay for the UI skeleton to show (optional, feels premium)
-      await new Promise(r => setTimeout(r, 600));
-
       const response = await fetch(`https://tikwm.com/api/?url=${encodeURIComponent(url)}`);
       const data: TikwmResponse = await response.json();
 
       if (data.code === 0 && data.data) {
         setVideoData(data.data);
+        const resolvedData = data.data;
+        const currentUrl = url;
+        setDownloadHistory(prev => {
+           const newHistory = [{
+             id: resolvedData.author.unique_id + "_" + Date.now().toString(),
+             url: currentUrl,
+             title: resolvedData.title || '',
+             thumbnail: resolvedData.cover || '',
+             timestamp: Date.now()
+           }, ...prev.filter(item => item.url !== currentUrl)].slice(0, 10);
+           
+           localStorage.setItem('flowtik-history', JSON.stringify(newHistory));
+           
+           if (JSONBIN_BIN_ID && JSONBIN_BIN_ID !== "YOUR_JSONBIN_BIN_ID_HERE") {
+             fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
+               method: 'PUT',
+               headers: {
+                 'Content-Type': 'application/json',
+                 ...(JSONBIN_API_KEY && JSONBIN_API_KEY !== "YOUR_JSONBIN_API_KEY_HERE" ? { 'X-Master-Key': JSONBIN_API_KEY } : {})
+               },
+               body: JSON.stringify({ history: newHistory })
+             }).catch(e => console.error("Cloud sync failed"));
+           }
+           
+           return newHistory;
+        });
       } else {
         showToast(data.msg || 'Failed to fetch video. Please check the URL and try again.', 'error');
       }
@@ -119,6 +333,13 @@ export default function App() {
 
   const handleDownload = async (mediaUrl: string, filename: string) => {
     try {
+      if (window.gtag) {
+        window.gtag('event', 'download', {
+          event_category: 'engagement',
+          event_label: filename,
+        });
+      }
+      setDownloadingItems(prev => ({ ...prev, [filename]: true }));
       showToast('Starting download...', 'success');
       // Fetch as a blob to force download
       const response = await fetch(mediaUrl);
@@ -132,9 +353,14 @@ export default function App() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(blobUrl);
+      
+      showToast('Download complete!', 'success');
     } catch (err) {
       // Fallback: open link directly
+      showToast('Direct download failed, opening in new tab...', 'error');
       window.open(mediaUrl, '_blank', 'noopener,noreferrer');
+    } finally {
+      setDownloadingItems(prev => ({ ...prev, [filename]: false }));
     }
   };
 
@@ -259,6 +485,9 @@ export default function App() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
             <button onClick={() => setCurrentPage('home')} className={`hover:text-white transition-colors flex items-center gap-2 ${currentPage === 'home' ? 'text-white' : ''}`}>
               <Info className="w-4 h-4" /> Home
+            </button>
+            <button onClick={() => setCurrentPage('blog')} className={`hover:text-white transition-colors flex items-center gap-2 ${(currentPage === 'blog' || currentPage === 'post') ? 'text-white' : ''}`}>
+              <FileText className="w-4 h-4" /> Blog
             </button>
             <button onClick={() => setCurrentPage('about')} className={`hover:text-white transition-colors flex items-center gap-2 ${currentPage === 'about' ? 'text-white' : ''}`}>
               <HelpCircle className="w-4 h-4" /> About
@@ -407,6 +636,7 @@ export default function App() {
                     <img 
                       src={videoData.cover} 
                       alt={videoData.title}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -466,11 +696,21 @@ export default function App() {
                     <motion.button
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
+                      disabled={downloadingItems[`${videoData.author.unique_id}_video.mp4`]}
                       onClick={() => handleDownload(videoData.play, `${videoData.author.unique_id}_video.mp4`)}
-                      className="w-full flex items-center justify-center gap-2 bg-white text-slate-900 font-bold py-4 px-6 rounded-xl shadow-lg shadow-white/10 hover:shadow-white/20 transition-all border border-transparent"
+                      className="w-full flex items-center justify-center gap-2 bg-white text-slate-900 font-bold py-4 px-6 rounded-xl shadow-lg shadow-white/10 hover:shadow-white/20 transition-all border border-transparent disabled:opacity-75 disabled:cursor-not-allowed"
                     >
-                      <Download className="w-6 h-6" />
-                      <span className="text-lg">Download (No Watermark)</span>
+                      {downloadingItems[`${videoData.author.unique_id}_video.mp4`] ? (
+                        <>
+                          <Loader2 className="w-6 h-6 animate-spin" />
+                          <span className="text-lg">Downloading HD...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-6 h-6" />
+                          <span className="text-lg">Download (No Watermark)</span>
+                        </>
+                      )}
                     </motion.button>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -491,11 +731,21 @@ export default function App() {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
+                        disabled={downloadingItems[`${videoData.author.unique_id}_audio.mp3`]}
                         onClick={() => handleDownload(videoData.music, `${videoData.author.unique_id}_audio.mp3`)}
-                        className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl transition-colors border border-white/5 w-full shadow-md"
+                        className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl transition-colors border border-white/5 w-full shadow-md disabled:opacity-75 disabled:cursor-not-allowed"
                       >
-                        <Music className="w-4 h-4 text-rose-400" />
-                        <span>Save Audio</span>
+                        {downloadingItems[`${videoData.author.unique_id}_audio.mp3`] ? (
+                          <>
+                            <Loader2 className="w-4 h-4 text-rose-400 animate-spin" />
+                            <span>Downloading...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Music className="w-4 h-4 text-rose-400" />
+                            <span>Save Audio</span>
+                          </>
+                        )}
                       </motion.button>
 
                       <motion.button
@@ -508,6 +758,7 @@ export default function App() {
                         <span>Convert New</span>
                       </motion.button>
                     </div>
+                    <ShareButtons url={window.location.host ? (window.location.protocol + "//" + window.location.host) : "https://flowtik.xyz"} title={`Check out this TikTok video I downloaded without a watermark using FlowTik!`} className="justify-center border-t border-white/5 pt-6 mt-6" />
                   </div>
                 </div>
               </div>
@@ -515,14 +766,58 @@ export default function App() {
           )}
         </AnimatePresence>
 
+        {/* Download History Section */}
+        {downloadHistory.length > 0 && currentPage === 'home' && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-full max-w-4xl mt-12 bg-slate-900/40 border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative z-10"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <RefreshCw className="w-5 h-5 text-cyan-400" /> Recent Downloads
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {downloadHistory.map(item => (
+                <div 
+                  key={item.id} 
+                  className="bg-white/5 rounded-xl border border-white/10 overflow-hidden hover:border-cyan-500/50 transition-all group cursor-pointer" 
+                  onClick={() => {
+                    setUrl(item.url);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <div className="aspect-[9/16] relative bg-black/50">
+                    {item.thumbnail ? (
+                      <img src={item.thumbnail} alt={item.title} loading="lazy" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-slate-800"><Download className="w-8 h-8 text-slate-600" /></div>
+                    )}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                       <Play className="w-8 h-8 text-white ml-1 drop-shadow-md" />
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <p className="text-xs text-slate-300 font-medium truncate" title={item.title}>{item.title || "TikTok Video"}</p>
+                    <p className="text-[10px] text-slate-500 mt-1">{new Date(item.timestamp).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* SEO Content Section */}
         {!videoData && !loading && (
           <motion.section 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full max-w-5xl mt-24 mb-6 text-slate-300"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full max-w-5xl mt-16 mb-6 text-slate-300"
           >
+            <AdUnit className="mb-16" />
+            
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center tracking-tight">Best Free TikTok Downloader <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">To Save Videos No Watermark</span></h2>
             
             <div className="grid md:grid-cols-3 gap-6 mb-16">
@@ -634,6 +929,8 @@ export default function App() {
                   </details>
                 </div>
               </section>
+              
+              <AdUnit />
             </div>
           </motion.section>
         )}
@@ -645,6 +942,74 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-slate-900/60 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-2xl"
           >
+            {currentPage === 'blog' && (
+              <div className="prose prose-invert max-w-none">
+                <h1 className="text-4xl font-bold mb-4 flex items-center gap-3"><FileText className="text-cyan-400" /> FlowTik Blog</h1>
+                <p className="text-slate-400 mb-12 text-lg">Tips, updates, and news about downloading and marketing with TikTok videos.</p>
+                
+                <AdUnit className="mb-8" />
+                
+                <div className="grid gap-8">
+                  {mockPosts.map(post => (
+                    <div key={post.id} className="bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-white/5 hover:border-cyan-500/30 transition-all group">
+                      <div className="flex items-center gap-4 text-sm text-cyan-400 mb-3">
+                        <span className="font-semibold">{post.category}</span>
+                        <span className="text-slate-500">•</span>
+                        <span className="text-slate-500">{post.date}</span>
+                      </div>
+                      <h2 
+                        onClick={() => { setCurrentPostId(post.id); setCurrentPage('post'); }}
+                        className="text-2xl font-bold text-white mb-3 hover:text-cyan-400 cursor-pointer transition-colors"
+                      >
+                        {post.title}
+                      </h2>
+                      <p className="text-slate-400 mb-6 leading-relaxed">{post.excerpt}</p>
+                      <button 
+                        onClick={() => { setCurrentPostId(post.id); setCurrentPage('post'); }}
+                        className="text-cyan-400 font-bold hover:text-cyan-300 flex items-center gap-2 group-hover:gap-3 transition-all"
+                      >
+                        Read Full Guide <Download className="w-4 h-4 rotate-[-90deg]" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {currentPage === 'post' && currentPostId && (
+              <div className="prose prose-invert max-w-none">
+                <button 
+                  onClick={() => setCurrentPage('blog')}
+                  className="mb-8 text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-2 transition-colors"
+                >
+                  <Download className="w-4 h-4 rotate-[90deg]" /> Back to Blog
+                </button>
+                
+                {(() => {
+                  const post = mockPosts.find(p => p.id === currentPostId);
+                  if (!post) return <p>Post not found.</p>;
+                  return (
+                    <article>
+                      <div className="mb-8">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-cyan-400 font-semibold">{post.category}</span>
+                          <span className="text-slate-500">{post.date}</span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">{post.title}</h1>
+                        <ShareButtons url={window.location.host ? (window.location.protocol + "//" + window.location.host) : "https://flowtik.xyz"} title={post.title} className="mt-0" />
+                      </div>
+                      
+                      <AdUnit className="mb-8" />
+                      
+                      <div className="text-slate-300 text-lg leading-relaxed space-y-6">
+                        {post.content}
+                      </div>
+                      
+                      <AdUnit className="mt-12" />
+                    </article>
+                  );
+                })()}
+              </div>
+            )}
             {currentPage === 'privacy' && (
               <div className="prose prose-invert max-w-none">
                 <h1 className="text-3xl font-bold mb-8 flex items-center gap-3"><Shield className="text-cyan-400" /> Privacy Policy</h1>
@@ -757,6 +1122,7 @@ export default function App() {
               <div className="flex flex-col gap-4">
                 <h4 className="font-bold text-white uppercase tracking-widest text-xs">Help</h4>
                 <button onClick={() => setCurrentPage('contact')} className="text-slate-400 hover:text-white transition-colors text-left">Contact Us</button>
+                <button onClick={() => setCurrentPage('blog')} className="text-slate-400 hover:text-white transition-colors text-left">Blog</button>
                 <button onClick={() => setCurrentPage('home')} className="text-slate-400 hover:text-white transition-colors text-left">FAQ</button>
               </div>
             </div>
