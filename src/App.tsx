@@ -185,6 +185,53 @@ interface ToastInfo {
   type: 'error' | 'success';
 }
 
+const SpeechSynthesisButton = ({ text, title }: { text: string, title?: string }) => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+
+  useEffect(() => {
+    const loadVoices = () => setVoices(window.speechSynthesis.getVoices());
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+    }
+  }, []);
+
+  const toggleSpeech = () => {
+    if (!window.speechSynthesis) return;
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    } else {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(title ? `${title}. ${text}` : text);
+      utterance.onend = () => setIsSpeaking(false);
+      
+      const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+      if (englishVoices.length > 0) utterance.voice = englishVoices[0];
+      
+      window.speechSynthesis.speak(utterance);
+      setIsSpeaking(true);
+    }
+  };
+
+  useEffect(() => {
+    return () => { if(window.speechSynthesis) window.speechSynthesis.cancel(); };
+  }, []);
+
+  return (
+    <button 
+      onClick={toggleSpeech}
+      className={`p-2 rounded-full flex items-center justify-center transition-colors ${isSpeaking ? 'bg-cyan-500/20 text-cyan-400' : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'}`}
+      title={isSpeaking ? "Stop listening" : "Listen to this post"}
+    >
+      {isSpeaking ? <div className="w-4 h-4 bg-cyan-400 rounded-sm animate-pulse" /> : <Play className="w-4 h-4" />}
+      <span className="sr-only">{isSpeaking ? 'Stop' : 'Listen'}</span>
+      <span className="ml-2 text-sm font-medium">{isSpeaking ? 'Listening...' : 'Listen to post'}</span>
+    </button>
+  );
+};
+
 export default function App() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -995,7 +1042,10 @@ export default function App() {
                           <span className="text-slate-500">{post.date}</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">{post.title}</h1>
-                        <ShareButtons url={window.location.host ? (window.location.protocol + "//" + window.location.host) : "https://flowtik.xyz"} title={post.title} className="mt-0" />
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-0">
+                           <ShareButtons url={window.location.host ? (window.location.protocol + "//" + window.location.host) : "https://flowtik.xyz"} title={post.title} className="mt-0" />
+                           <SpeechSynthesisButton text={post.excerpt} title={post.title} />
+                        </div>
                       </div>
                       
                       <AdUnit className="mb-8" />
