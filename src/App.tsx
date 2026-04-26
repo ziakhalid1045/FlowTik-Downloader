@@ -19,61 +19,65 @@ interface BlogPost {
 
 const mockPosts: BlogPost[] = [
   {
-    id: 'how-to-download-tiktok-videos-no-watermark',
-    title: 'How to Download TikTok Videos Without Watermark in 2026',
-    excerpt: 'Learn the quickest and most effective methods to save TikTok content without the distracting logo...',
-    date: 'April 25, 2026',
+    id: 'how-to-download-tiktok-videos-without-watermark',
+    title: 'How to download TikTok videos without watermark',
+    excerpt: 'Learn the easiest and fastest way to download any TikTok video in HD quality without the annoying watermark.',
+    date: 'April 26, 2026',
     category: 'Guides',
     content: (
       <>
-        <p>In 2026, TikTok remains the powerhouse of short-form video content. From viral dances to educational snippets, everyone is creating and sharing. But what if you want to save a video for offline viewing or repurpose it on another platform without that bouncing watermark?</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">Why Remove the Watermark?</h2>
-        <p>Watermarks can be distracting, especially if you are a creator trying to maintain a cohesive aesthetic across Instagram Reels or YouTube Shorts. Using a tool like FlowTik ensures the video looks native and high-quality.</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">The FlowTik Method</h2>
-        <p>FlowTik is the leading free web service to fetch and download TikTok content in HD. It doesn’t compress your videos—you get the highest resolution available directly from the TikTok CDN.</p>
+        <p>TikTok is filled with amazing videos, but downloading them directly from the app leaves a bouncing watermark that can ruin the visual experience, especially if you want to use the video as a live wallpaper or share it with friends.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Why use a third-party downloader?</h2>
+        <p>Using a tool like FlowTik allows you to get the pure, untouched video file directly from TikTok's servers. No compression, no logos.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Step-by-step Guide</h2>
         <ol className="list-decimal pl-6 mt-4 space-y-2">
-          <li>Find the video on the TikTok app and tap "Share".</li>
-          <li>Select "Copy Link".</li>
-          <li>Paste the link into FlowTik.xyz and click "Download".</li>
+          <li>Open the TikTok app and find the video you want.</li>
+          <li>Tap the "Share" button (the arrow icon).</li>
+          <li>Tap "Copy Link".</li>
+          <li>Open FlowTik.xyz in your browser.</li>
+          <li>Paste the link into the search box and tap "Download".</li>
+          <li>Choose "Download (No Watermark)" to save the HD video!</li>
         </ol>
       </>
     )
   },
   {
-    id: 'tiktok-marketing-trends-business',
-    title: 'Top 5 TikTok Trends for Business Marketing',
-    excerpt: 'Discover which viral trends are driving real ROI for businesses and how to leverage them immediately.',
-    date: 'April 22, 2026',
-    category: 'Marketing',
+    id: 'best-tiktok-downloader-tools',
+    title: 'Best TikTok downloader tools',
+    excerpt: 'We compare the top tools available for saving TikTok videos, and explain why a web-based approach is best.',
+    date: 'April 20, 2026',
+    category: 'Reviews',
     content: (
       <>
-        <p>Brands have realized that traditional advertising doesn't work on TikTok. The golden rule? "Make TikToks, not ads." Here are the top trends you need to jump on.</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">1. Behind The Scenes (BTS) Authentic Content</h2>
-        <p>Showcasing the messy backstage of your business builds trust. People want to see the human side of the brand.</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">2. Employee Advocates</h2>
-        <p>Instead of hiring expensive influencers, many brands are turning their own employees into stars.</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">3. Save & Repurpose</h2>
-        <p>When an employee makes a great TikTok, brands often want to cross-post it to LinkedIn or Twitter. This is where downloading the HD video without a watermark (using FlowTik!) becomes an essential business marketing tool.</p>
+        <p>With the rise of TikTok, hundreds of "downloaders" have appeared on the App Store and Google Play. But which one should you use?</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Apps vs Web Services</h2>
+        <p>Many apps require you to pay a subscription, watch long 30-second unskippable ads, or even log in with your personal account. This is a massive privacy risk.</p>
+        <p className="mt-4">Web services like <strong>FlowTik</strong> are vastly superior because:</p>
+        <ul className="list-disc pl-6 mt-4 space-y-2">
+          <li>They work on any device (iOS, Android, PC, Mac).</li>
+          <li>No installation or storage space is required.</li>
+          <li>No login or registration needed, ensuring total anonymity.</li>
+          <li>They are completely free.</li>
+        </ul>
+        <p className="mt-4">Next time you need to save a video, skip the app store and just use your browser.</p>
       </>
     )
   },
   {
-    id: 'tiktok-to-mp3-guide',
-    title: 'Extracting Viral Audio: The Ultimate TikTok to MP3 Guide',
-    excerpt: 'Found a trending sound on a video? Here is how to legally and easily save it as an MP3 for your own creations.',
-    date: 'April 19, 2026',
-    category: 'Tips & Tricks',
+    id: 'is-tiktok-downloader-safe',
+    title: 'Is TikTok downloader safe?',
+    excerpt: 'Understanding the safety, privacy, and legality of downloading TikTok videos online.',
+    date: 'April 15, 2026',
+    category: 'Safety',
     content: (
       <>
-        <p>Sometimes the best part of a TikTok isn't the video—it's the audio. Whether it's a hilarious original voiceover or a remixed song, audio drives discovery on the platform.</p>
-        <h2 className="text-xl font-bold text-white mt-8 mb-4">How to Get the Audio</h2>
-        <p>FlowTik isn't just for videos. Our engine seamlessly separates the high-quality M4A/MP3 stream from the video file.</p>
-        <ol className="list-decimal pl-6 mt-4 space-y-2">
-          <li>Copy the TikTok URL of the video containing the sound.</li>
-          <li>Paste it into FlowTik.</li>
-          <li>Below the result, click the "Download Audio" or "MP3" button.</li>
-        </ol>
-        <p className="mt-4">You can now use this audio in your video editing software of choice!</p>
+        <p>Safety is the number one concern for users downloading content from the internet. When using a TikTok downloader, safety comes in two forms: device security and legal compliance.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Device Security</h2>
+        <p>As long as you use a reputable web-based downloader like FlowTik, your device is 100% safe. We don't ask you to install any software (.exe or .apk files), which eliminates the risk of malware or viruses. The video files (MP4) and audio files (MP3) are served directly from secure CDN networks.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Privacy</h2>
+        <p>We do not store your download history on our servers. All your activity is kept completely private and processed locally in your browser.</p>
+        <h2 className="text-xl font-bold text-white mt-8 mb-4">Legality</h2>
+        <p>Downloading videos for personal, offline viewing is generally acceptable. However, you should never download copyrighted content and upload it as your own. Always respect the original creators' intellectual property rights.</p>
       </>
     )
   }
@@ -100,14 +104,65 @@ const AdUnit = ({ className = "my-8" }: { className?: string }) => {
   }, []);
 
   return (
-    <div className={`w-full bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-slate-500 text-sm p-4 text-center min-h-[120px] overflow-hidden ${className}`}>
+    <div className={`w-full bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-slate-500 text-sm text-center min-h-[120px] overflow-hidden ${className}`}>
       <ins className="adsbygoogle"
            ref={adRef}
-           style={{display: 'block', width: '100%', height: '100%'}}
+           style={{display: 'block', width: '100%'}}
+           data-ad-format="fluid"
+           data-ad-layout-key="-fb+5w+4e-db+86"
            data-ad-client="ca-pub-5944670264663002"
-           data-ad-slot="1234567890" // Placeholder slot ID
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+           data-ad-slot="4143727935"></ins>
+    </div>
+  );
+};
+
+const InArticleAd = ({ className = "my-8" }: { className?: string }) => {
+  const adRef = useRef<HTMLModElement>(null);
+
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && adRef.current && !adRef.current.getAttribute('data-adsbygoogle-status')) {
+         (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  return (
+    <div className={`w-full overflow-hidden ${className}`}>
+      <ins className="adsbygoogle"
+           ref={adRef}
+           style={{display: 'block', textAlign: 'center'}}
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-5944670264663002"
+           data-ad-slot="3904369417"></ins>
+    </div>
+  );
+};
+
+const MultiplexAd = ({ className = "my-8" }: { className?: string }) => {
+  const adRef = useRef<HTMLModElement>(null);
+
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && adRef.current && !adRef.current.getAttribute('data-adsbygoogle-status')) {
+         (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  return (
+    <div className={`w-full overflow-hidden ${className}`}>
+      <ins className="adsbygoogle"
+           ref={adRef}
+           style={{display: 'block'}}
+           data-ad-format="autorelaxed"
+           data-ad-client="ca-pub-5944670264663002"
+           data-ad-slot="1234567891"></ins>
     </div>
   );
 };
@@ -143,14 +198,7 @@ const ShareButtons = ({ url, title, className = "" }: { url: string, title: stri
 
 import { motion, AnimatePresence } from 'motion/react';
 
-// --- Cloud Database Configuration ---
-// TO DEPLOY WITHOUT MANUAL SETUP:
-// These are temporary mock values for JSONBin.
-// To use your own cloud database, create a bin at jsonbin.io and paste the API Key and BIN ID here.
-// IMPORTANT: Exposing API keys in client-side code is a potential security risk in production.
-const JSONBIN_API_KEY = "YOUR_JSONBIN_API_KEY_HERE";
-const JSONBIN_BIN_ID = "YOUR_JSONBIN_BIN_ID_HERE";
-
+// --- App State Interfaces ---
 interface DownloadHistoryItem {
   id: string;
   url: string;
@@ -245,29 +293,12 @@ export default function App() {
   const [downloadHistory, setDownloadHistory] = useState<DownloadHistoryItem[]>([]);
 
   useEffect(() => {
-    const loadHistory = async () => {
+    const loadHistory = () => {
       const local = localStorage.getItem('flowtik-history');
       if (local) {
         try {
           setDownloadHistory(JSON.parse(local));
         } catch(e) {}
-      }
-      
-      if (JSONBIN_BIN_ID && JSONBIN_BIN_ID !== "YOUR_JSONBIN_BIN_ID_HERE") {
-        try {
-          const res = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
-            headers: {
-              ...(JSONBIN_API_KEY && JSONBIN_API_KEY !== "YOUR_JSONBIN_API_KEY_HERE" ? { 'X-Master-Key': JSONBIN_API_KEY } : {})
-            }
-          });
-          const data = await res.json();
-          if (data?.record?.history) {
-            setDownloadHistory(data.record.history);
-            localStorage.setItem('flowtik-history', JSON.stringify(data.record.history));
-          }
-        } catch (error) {
-          console.error("Failed to fetch history from cloud:", error);
-        }
       }
     };
     loadHistory();
@@ -336,17 +367,6 @@ export default function App() {
            }, ...prev.filter(item => item.url !== currentUrl)].slice(0, 10);
            
            localStorage.setItem('flowtik-history', JSON.stringify(newHistory));
-           
-           if (JSONBIN_BIN_ID && JSONBIN_BIN_ID !== "YOUR_JSONBIN_BIN_ID_HERE") {
-             fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
-               method: 'PUT',
-               headers: {
-                 'Content-Type': 'application/json',
-                 ...(JSONBIN_API_KEY && JSONBIN_API_KEY !== "YOUR_JSONBIN_API_KEY_HERE" ? { 'X-Master-Key': JSONBIN_API_KEY } : {})
-               },
-               body: JSON.stringify({ history: newHistory })
-             }).catch(e => console.error("Cloud sync failed"));
-           }
            
            return newHistory;
         });
@@ -994,7 +1014,7 @@ export default function App() {
                 <h1 className="text-4xl font-bold mb-4 flex items-center gap-3"><FileText className="text-cyan-400" /> FlowTik Blog</h1>
                 <p className="text-slate-400 mb-12 text-lg">Tips, updates, and news about downloading and marketing with TikTok videos.</p>
                 
-                <AdUnit className="mb-8" />
+                <InArticleAd className="mb-8" />
                 
                 <div className="grid gap-8">
                   {mockPosts.map(post => (
@@ -1048,13 +1068,13 @@ export default function App() {
                         </div>
                       </div>
                       
-                      <AdUnit className="mb-8" />
+                      <InArticleAd className="mb-8" />
                       
                       <div className="text-slate-300 text-lg leading-relaxed space-y-6">
                         {post.content}
                       </div>
                       
-                      <AdUnit className="mt-12" />
+                      <InArticleAd className="mt-12" />
                     </article>
                   );
                 })()}
@@ -1063,6 +1083,7 @@ export default function App() {
             {currentPage === 'privacy' && (
               <div className="prose prose-invert max-w-none">
                 <h1 className="text-3xl font-bold mb-8 flex items-center gap-3"><Shield className="text-cyan-400" /> Privacy Policy</h1>
+                <AdUnit className="mb-8" />
                 <p className="text-slate-400 mb-6">Last Updated: April 24, 2026</p>
                 <div className="space-y-6 text-slate-300">
                   <p>At FlowTik, accessible from FlowTik.xyz, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by FlowTik and how we use it.</p>
@@ -1073,12 +1094,14 @@ export default function App() {
                   <h2 className="text-xl font-bold text-white mt-8">Third Party Privacy Policies</h2>
                   <p>FlowTik's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.</p>
                 </div>
+                <MultiplexAd className="my-8" />
                 <button onClick={() => setCurrentPage('home')} className="mt-12 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-xl transition-all border border-white/5">Back to Home</button>
               </div>
             )}
             {currentPage === 'terms' && (
               <div className="prose prose-invert max-w-none">
                 <h1 className="text-3xl font-bold mb-8 flex items-center gap-3"><FileText className="text-cyan-400" /> Terms of Service</h1>
+                <AdUnit className="mb-8" />
                 <p className="text-slate-400 mb-6">Last Updated: April 24, 2026</p>
                 <div className="space-y-6 text-slate-300">
                   <p>By accessing FlowTik.xyz, you agree to comply with and be bound by the following terms and conditions of use.</p>
@@ -1089,11 +1112,13 @@ export default function App() {
                   <h2 className="text-xl font-bold text-white mt-8">3. Disclaimer</h2>
                   <p>The materials on FlowTik.xyz are provided on an 'as is' basis. FlowTik makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability.</p>
                 </div>
+                <MultiplexAd className="my-8" />
                 <button onClick={() => setCurrentPage('home')} className="mt-12 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-xl transition-all border border-white/5">Back to Home</button>
               </div>
             )}
             {currentPage === 'about' && (
               <div className="prose prose-invert max-w-none text-center">
+                <AdUnit className="mb-8" />
                 <div className="w-20 h-20 bg-gradient-to-tr from-[#FE2C55] to-[#25F4EE] rounded-2xl flex items-center justify-center shadow-2xl mx-auto mb-8">
                    <Play className="w-10 h-10 text-white fill-current ml-1" />
                 </div>
@@ -1103,12 +1128,14 @@ export default function App() {
                   <p>Born from a need for simplicity and speed, FlowTik was developed to provide a seamless bridge between online entertainment and offline enjoyment. We believe that technology should be accessible to everyone, which is why we've built a platform that requires zero technical knowledge to use.</p>
                   <p>Our team is dedicated to maintaining the most stable and fastest TikTok downloader on the web. We continuously update our systems to ensure compatibility with the latest platform changes.</p>
                 </div>
+                <MultiplexAd className="my-8" />
                 <button onClick={() => setCurrentPage('home')} className="mt-12 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-12 rounded-xl transition-all">Start Downloading</button>
               </div>
             )}
             {currentPage === 'contact' && (
               <div className="prose prose-invert max-w-none">
                 <h1 className="text-3xl font-bold mb-8 flex items-center gap-3"><Mail className="text-cyan-400" /> Contact Us</h1>
+                <AdUnit className="mb-8" />
                 <p className="text-slate-400 mb-8">Have questions, feedback, or need help? We'd love to hear from you. Please reach out through any of the channels below.</p>
                 <div className="grid md:grid-cols-2 gap-8 mb-12">
                   <div className="bg-white/5 p-8 rounded-2xl border border-white/5">
@@ -1125,17 +1152,21 @@ export default function App() {
                 <div className="bg-cyan-900/10 border border-cyan-500/20 p-8 rounded-2xl">
                   <p className="text-slate-300 italic text-sm">Response time: We typically respond to all inquiries within 24-48 business hours.</p>
                 </div>
+                <MultiplexAd className="my-8" />
                 <button onClick={() => setCurrentPage('home')} className="mt-12 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-xl transition-all border border-white/5">Back to Home</button>
               </div>
             )}
             {currentPage === 'disclaimer' && (
                 <div className="prose prose-invert max-w-none">
                   <h1 className="text-3xl font-bold mb-8 flex items-center gap-3"><AlertCircle className="text-rose-400" /> Disclaimer</h1>
+                  <AdUnit className="mb-8" />
                   <div className="space-y-6 text-slate-300">
                     <p>The information and tools provided by FlowTik.xyz are for educational and personal use only. FlowTik does not host any content on its servers; it merely acts as a technical intermediary that facilitates the download of publicly available content from TikTok's servers.</p>
+                    <p className="font-bold text-rose-400">We do not host or store any copyrighted content.</p>
                     <p>Users are solely responsible for ensuring that their use of downloaded content complies with the terms of service of the original platform and applicable copyright laws. FlowTik is not affiliated with, authorized, maintained, sponsored, or endorsed by TikTok or any of its affiliates or subsidiaries.</p>
                     <p>By using this website, you acknowledge that you are responsible for any potential copyright infringement if you use downloaded content for commercial purposes without the original creator's permission.</p>
                   </div>
+                  <MultiplexAd className="my-8" />
                   <button onClick={() => setCurrentPage('home')} className="mt-12 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-8 rounded-xl transition-all border border-white/5">Back to Home</button>
                 </div>
             )}

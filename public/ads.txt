@@ -1,0 +1,4 @@
+google.com, pub-5944670264663002, DIRECT, f08c47fec0942fa0
+
+# Note: Place this ads.txt file in the root of your domain.
+# If deploying on Vercel, having it in the 'public' folder will automatically serve it at /ads.txt
